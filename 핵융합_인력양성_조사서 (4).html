@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>핵융합 인력양성 현황 실태조사 (대학)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@400;600&display=swap');
+
+  :root {
+    --bg: #f4f6fb;
+    --card: #ffffff;
+    --primary: #1a3a6b;
+    --primary-light: #2a5298;
+    --accent: #e8a020;
+    --accent-light: #fef3dc;
+    --border: #d1dae8;
+    --text: #1c2333;
+    --text-muted: #5a6b85;
+    --section-bg: #eef2f9;
+    --input-bg: #f9fafc;
+    --required: #c0392b;
+    --success: #1e7e50;
+    --header-height: 180px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: linear-gradient(135deg, #0d2045 0%, #1a3a6b 60%, #2a5298 100%);
+    padding: 36px 0 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(232,160,32,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .site-header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 10%;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .header-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+  .gov-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .gov-badge span { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; display: inline-block; }
+  .header-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+  .header-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.3px;
+  }
+
+  /* ── CONTAINER ── */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 32px 24px 60px;
+  }
+
+  /* ── INTRO CARD ── */
+  .intro-card {
+    background: var(--card);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    line-height: 1.9;
+    font-size: 13.5px;
+    color: #3a4a60;
+    box-shadow: 0 2px 12px rgba(26,58,107,0.06);
+  }
+  .intro-card p + p { margin-top: 10px; }
+  .intro-date { margin-top: 18px; font-size: 13px; color: var(--text-muted); }
+  .intro-org { font-weight: 600; color: var(--primary); }
+
+  /* ── NOTICE BOX ── */
+  .notice-box {
+    background: #fff8e8;
+    border-left: 4px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin-bottom: 28px;
+    font-size: 13px;
+    color: #5a4010;
+  }
+  .notice-box p { margin-bottom: 4px; }
+  .notice-box p:last-child { margin-bottom: 0; }
+
+  /* ── SECTION ── */
+  .section-block {
+    background: var(--card);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    margin-bottom: 24px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(26,58,107,0.06);
+  }
+  .section-header {
+    background: var(--section-bg);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-badge {
+    background: var(--primary);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  .section-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: -0.3px;
+  }
+  .section-body { padding: 24px; }
+
+  /* ── FIELD ROWS ── */
+  .field-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .field-group { margin-bottom: 18px; }
+  .field-group:last-child { margin-bottom: 0; }
+  .field-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 6px;
+  }
+  .field-label .req { color: var(--required); margin-left: 3px; }
+  .field-input {
+    width: 100%;
+    padding: 9px 13px;
+    border: 1.5px solid var(--border);
+    border-radius: 7px;
+    font-family: inherit;
+    font-size: 13.5px;
+    background: var(--input-bg);
+    color: var(--text);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+  .field-input:focus {
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(42,82,152,0.1);
+    background: #fff;
+  }
+  .field-full { grid-column: 1 / -1; }
+
+  /* ── QUESTION ── */
+  .q-block { margin-bottom: 28px; }
+  .q-block:last-child { margin-bottom: 0; }
+  .q-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 10px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .q-num {
+    background: var(--primary);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    min-width: 28px;
+    height: 22px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+  .q-hint {
+    background: #f0f4ff;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    color: #3a5080;
+    margin-bottom: 14px;
+  }
+  .q-hint ul { padding-left: 16px; }
+  .q-hint li { margin-bottom: 2px; }
+
+  /* ── TABLE ── */
+  .survey-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 6px;
+  }
+  .survey-table th {
+    background: var(--primary);
+    color: #fff;
+    padding: 9px 10px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 12.5px;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .survey-table td {
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    text-align: center;
+    vertical-align: middle;
+  }
+  .survey-table tr:nth-child(even) td { background: #f8fafd; }
+  .survey-table tr:hover td { background: #eef4ff; }
+  .survey-table .row-label {
+    text-align: left;
+    font-weight: 500;
+    color: var(--primary);
+    background: var(--section-bg);
+    white-space: nowrap;
+  }
+  .survey-table .badge-col {
+    background: #e8eef7;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--primary);
+    padding: 7px 12px;
+  }
+  .num-input {
+    width: 70px;
+    padding: 5px 6px;
+    border: 1.5px solid var(--border);
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 13px;
+    text-align: center;
+    background: var(--input-bg);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .num-input:focus {
+    border-color: var(--primary-light);
+    background: #fff;
+  }
+  .unit { font-size: 11px; color: var(--text-muted); margin-left: 2px; }
+
+  /* ── CHECKBOX / RADIO ── */
+  .check-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 7px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    font-size: 13.5px;
+  }
+  .check-item:hover { border-color: var(--primary-light); background: #f0f5ff; }
+  .check-item input { accent-color: var(--primary); width: 15px; height: 15px; cursor: pointer; }
+  .check-item.has-input { flex-wrap: wrap; }
+  .check-item .extra-input {
+    flex: 1; min-width: 120px;
+    border: none; border-bottom: 1.5px solid var(--border);
+    padding: 2px 4px; font-family: inherit; font-size: 13px;
+    background: transparent; outline: none;
+  }
+
+  /* ── Q2 Sub blocks ── */
+  .sub-block {
+    background: var(--section-bg);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+  }
+  .sub-block:last-child { margin-bottom: 0; }
+  .sub-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary-light);
+    margin-bottom: 10px;
+  }
+
+  /* ── Q3 TABLE ── */
+  .year-section { margin-bottom: 20px; }
+  .year-label {
+    background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: #fff;
+    padding: 7px 16px;
+    font-weight: 700;
+    font-size: 13px;
+    border-radius: 6px 6px 0 0;
+    display: inline-block;
+    letter-spacing: 0.3px;
+  }
+  .career-table { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+  .career-table th {
+    background: var(--primary);
+    color: #fff;
+    padding: 7px 5px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.18);
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .career-table .th-group {
+    background: #2a5298;
+  }
+  .career-table td {
+    padding: 5px 4px;
+    border: 1px solid var(--border);
+    text-align: center;
+  }
+  .career-table tr:nth-child(even) td { background: #f8fafd; }
+  .career-table .degree-cell {
+    text-align: left;
+    font-weight: 600;
+    color: var(--primary);
+    background: var(--section-bg);
+    padding-left: 10px;
+    white-space: nowrap;
+    font-size: 12px;
+  }
+  .career-table .sum-cell { background: #e8eef7; font-weight: 700; }
+  .mini-input {
+    width: 42px;
+    padding: 3px 2px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 11.5px;
+    text-align: center;
+    background: var(--input-bg);
+    outline: none;
+  }
+  .mini-input:focus { border-color: var(--primary-light); background: #fff; }
+
+  /* ── Q4/5 TABLE ── */
+  .course-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .course-table th {
+    background: var(--primary);
+    color: #fff;
+    padding: 8px 10px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.15);
+    font-size: 12.5px;
+  }
+  .course-table td {
+    padding: 6px 8px;
+    border: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  .course-table .section-row td {
+    background: var(--section-bg);
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 12.5px;
+  }
+  .course-table input[type="text"] {
+    width: 100%;
+    padding: 5px 7px;
+    border: 1.5px solid var(--border);
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 12.5px;
+    background: var(--input-bg);
+    outline: none;
+  }
+  .course-table input[type="text"]:focus {
+    border-color: var(--primary-light);
+    background: #fff;
+  }
+  .course-table select {
+    padding: 5px 7px;
+    border: 1.5px solid var(--border);
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 12.5px;
+    background: var(--input-bg);
+    outline: none;
+    width: 100%;
+  }
+
+  /* ── TEXTAREA ── */
+  .survey-textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 13.5px;
+    background: var(--input-bg);
+    color: var(--text);
+    resize: vertical;
+    min-height: 120px;
+    outline: none;
+    transition: border-color 0.2s;
+    line-height: 1.8;
+  }
+  .survey-textarea:focus {
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(42,82,152,0.1);
+    background: #fff;
+  }
+
+  /* ── RADIO GROUP ── */
+  .radio-group {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .radio-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+    font-size: 13.5px;
+  }
+  .radio-item input { accent-color: var(--primary); width: 15px; height: 15px; }
+
+  /* ── DIVIDER ── */
+  .q-divider { border: none; border-top: 1px dashed var(--border); margin: 20px 0; }
+
+  /* ── SUBMIT ── */
+  .submit-area {
+    text-align: center;
+    margin-top: 36px;
+    padding-top: 32px;
+    border-top: 2px solid var(--border);
+  }
+  .submit-btn {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: #fff;
+    border: none;
+    padding: 14px 56px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 16px rgba(26,58,107,0.3);
+    transition: opacity 0.2s, transform 0.1s;
+  }
+  .submit-btn:hover { opacity: 0.92; transform: translateY(-1px); }
+  .submit-btn:active { transform: translateY(0); }
+  .submit-note { font-size: 12px; color: var(--text-muted); margin-top: 10px; }
+
+  /* ── ADD ROW BTN ── */
+  .add-row-btn {
+    margin-top: 10px;
+    background: none;
+    border: 1.5px dashed var(--primary-light);
+    color: var(--primary-light);
+    padding: 7px 18px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 12.5px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .add-row-btn:hover { background: #eef4ff; }
+
+  /* ── REF BOX ── */
+  .ref-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(26,58,107,0.04);
+  }
+  .ref-toggle {
+    width: 100%;
+    background: var(--section-bg);
+    border: none;
+    padding: 14px 24px;
+    text-align: left;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .ref-toggle .arrow { transition: transform 0.3s; font-size: 12px; }
+  .ref-toggle.open .arrow { transform: rotate(180deg); }
+  .ref-content { display: none; padding: 20px 24px; }
+  .ref-content.open { display: block; }
+  .ref-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .ref-table th {
+    background: var(--primary);
+    color: #fff;
+    padding: 8px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .ref-table td {
+    padding: 7px 14px;
+    border: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .ref-table tr:nth-child(even) td { background: #f8fafd; }
+  .ref-badge {
+    display: inline-block;
+    background: var(--primary);
+    color: #fff;
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 4px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .field-grid { grid-template-columns: 1fr; }
+    .check-grid { grid-template-columns: 1fr; }
+    .survey-table { font-size: 11.5px; }
+    .num-input { width: 56px; }
+    .header-title { font-size: 20px; }
+    .career-table { font-size: 10.5px; }
+    .mini-input { width: 36px; }
+  }
+
+  /* ── SCROLL PROGRESS ── */
+  .progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--primary-light));
+    width: 0%;
+    z-index: 9999;
+    transition: width 0.1s;
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="gov-badge"><span></span> 과학기술정보통신부 · 핵융합정책센터</div>
+    <h1 class="header-title">핵융합 인력양성 현황 실태조사</h1>
+    <p class="header-sub">대학 연구실 대상 · 2025년 12월 31일 기준</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- INTRO -->
+  <div class="intro-card">
+    <p>안녕하십니까?</p>
+    <p>과학기술정보통신부는 2024년 「핵융합에너지 실현 가속화 전략」에 이어 2025년 「핵융합 핵심기술 개발 로드맵」 수립을 통해 미래 에너지 확보를 위한 핵융합에너지 개발을 국가 차원에서 적극 지원하고 있습니다.</p>
+    <p>핵융합에너지는 탄소중립 실현과 에너지 안보 강화를 위한 핵심기술입니다. 특히 글로벌 기술경쟁이 갈수록 심화됨에 따라, 기술개발과 산업화를 뒷받침할 전문인력의 체계적 양성과 선제적 확보가 그 어느 때보다 중요한 상황입니다.</p>
+    <p>이에 본 조사는 국내 핵융합 분야 인력양성 현황을 파악하고, 향후 인력양성 정책 및 지원방안 수립을 위한 기초자료를 수집하고자 추진되었습니다. 조사 결과는 통계 작성 및 정책 수립 목적으로만 사용되며, 관련 법령에 따라 철저히 보호됩니다.</p>
+    <p class="intro-date">2026. 4. &nbsp;&nbsp; <span class="intro-org">조사기관 : 핵융합정책센터</span></p>
+  </div>
+
+  <!-- NOTICE -->
+  <div class="notice-box">
+    <p>※ 질문 앞에 특별한 언급이 없는 한, <strong>'현재'</strong>라는 표현이 있는 질문은 <strong>2025년 12월 31일 기준</strong>으로 작성해 주십시오.</p>
+    <p>※ 모든 문항은 <strong>핵융합 분야와 관련된 내용</strong>을 기준으로 작성해 주십시오.</p>
+  </div>
+
+  <!-- 참고: 핵융합 핵심 기술 분류 -->
+  <div class="ref-box">
+    <button class="ref-toggle" id="refToggle" onclick="toggleRef()">
+      [참고] 핵융합 핵심 기술 분류 <span class="arrow">▼</span>
+    </button>
+    <div class="ref-content" id="refContent">
+      <table class="ref-table">
+        <thead>
+          <tr><th style="width:30%">대분류</th><th>중분류</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="ref-badge">Ⓐ</span>노심플라즈마</td><td>01. 노심 플라즈마 제어 &nbsp;|&nbsp; 02. 노심 플라즈마 진단 &nbsp;|&nbsp; 03. 노심 플라즈마 시뮬레이션</td></tr>
+          <tr><td><span class="ref-badge">Ⓑ</span>증식블랑켓</td><td>04. 설계/안전해석 &nbsp;|&nbsp; 05. 제작/검증 &nbsp;|&nbsp; 06. 계통</td></tr>
+          <tr><td><span class="ref-badge">Ⓒ</span>핵융합 소재</td><td>07. 구조재 &nbsp;|&nbsp; 08. 대면재 &nbsp;|&nbsp; 09. 기능소재</td></tr>
+          <tr><td><span class="ref-badge">Ⓓ</span>연료주기</td><td>10. 삼중수소 안전 &nbsp;|&nbsp; 11. 삼중수소 정제·분리·저장 &nbsp;|&nbsp; 12. 핵융합 연료 공급 &nbsp;|&nbsp; 13. 핵융합 진공 배기</td></tr>
+          <tr><td><span class="ref-badge">Ⓔ</span>디버터</td><td>14. 디버터 설계 &nbsp;|&nbsp; 15. 디버터 제작 및 검증</td></tr>
+          <tr><td><span class="ref-badge">Ⓕ</span>가열 및 전류구동 장치</td><td>16. 가열 전류구동 장치 &nbsp;|&nbsp; 17. 가열 전류구동 플라즈마 통합</td></tr>
+          <tr><td><span class="ref-badge">Ⓖ</span>초전도 자석</td><td>18. 초전도 선재 &nbsp;|&nbsp; 19. 초전도 도체 &nbsp;|&nbsp; 20. 초전도 자석 &nbsp;|&nbsp; 21. 초전도 자석 기반 시스템</td></tr>
+          <tr><td><span class="ref-badge">Ⓗ</span>핵융합 안전·인허가</td><td>22. 안전성 평가 &nbsp;|&nbsp; 23. 인허가 &nbsp;|&nbsp; 24. 방사선 안전 시설</td></tr>
+          <tr><td><span class="ref-badge">Ⓘ</span>기반장치·시설</td><td>25. 진공용기 &nbsp;|&nbsp; 26. 조립장비 &nbsp;|&nbsp; 27. 전원공급장치 &nbsp;|&nbsp; 28. 냉각수 공급장치 &nbsp;|&nbsp; 29. 건물</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 일반현황 -->
+  <div class="section-block">
+    <div class="section-header">
+      <span class="section-badge">기본정보</span>
+      <span class="section-title">일반 현황</span>
+    </div>
+    <div class="section-body">
+      <div class="field-grid">
+        <div class="field-group">
+          <label class="field-label">대학명 <span class="req">*</span></label>
+          <input class="field-input" type="text" placeholder="대학명을 입력하세요">
+        </div>
+        <div class="field-group">
+          <label class="field-label">학과명 <span class="req">*</span></label>
+          <input class="field-input" type="text" placeholder="학과명을 입력하세요">
+        </div>
+        <div class="field-group">
+          <label class="field-label">연구실 명</label>
+          <input class="field-input" type="text" placeholder="연구실명을 입력하세요">
+        </div>
+        <div class="field-group">
+          <label class="field-label">담당 교수</label>
+          <input class="field-input" type="text" placeholder="교수명을 입력하세요">
+        </div>
+        <div class="field-group">
+          <label class="field-label">연구실 소재지(지역)</label>
+          <input class="field-input" type="text" placeholder="※ 연구실 소재지 기준">
+        </div>
+        <div class="field-group">
+          <label class="field-label">홈페이지</label>
+          <input class="field-input" type="url" placeholder="https://">
+        </div>
+        <div class="field-group">
+          <label class="field-label">작성자 성명</label>
+          <input class="field-input" type="text" placeholder="성명">
+        </div>
+        <div class="field-group">
+          <label class="field-label">작성자 학과명</label>
+          <input class="field-input" type="text" placeholder="소속 학과">
+        </div>
+        <div class="field-group">
+          <label class="field-label">작성자 직위</label>
+          <input class="field-input" type="text" placeholder="직위">
+        </div>
+        <div class="field-group">
+          <label class="field-label">이메일</label>
+          <input class="field-input" type="email" placeholder="example@university.ac.kr">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- I. 인력 현황 -->
+  <div class="section-block">
+    <div class="section-header">
+      <span class="section-badge">I</span>
+      <span class="section-title">핵융합 분야 인력 현황</span>
+    </div>
+    <div class="section-body">
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">Q1</span> 귀 연구실의 핵융합 분야 연구인력 현황을 연구 분야별로 구분하여 작성해 주시기 바랍니다.</div>
+        <div class="q-hint">
+          <ul>
+            <li>2025년 12월 기준으로 입력해 주시기 바랍니다.</li>
+            <li>각 인력은 주 연구분야 1개만 선택하여 작성해 주시기 바랍니다.</li>
+            <li>분류표에 대응되는 항목이 없을 경우 기타 분류를 선택하고, 분류명을 직접 적어주시기 바랍니다.</li>
+            <li>학부생의 경우 해당 연구실에 소속된 학부연구생인 경우에만 작성해 주시기 바랍니다.</li>
+          </ul>
+        </div>
+        <div style="overflow-x:auto;">
+        <table class="survey-table">
+          <thead>
+            <tr>
+              <th style="width:220px; text-align:left; padding-left:14px;">분야 구분</th>
+              <th>박사 후 과정</th>
+              <th>박사 과정<br><span style="font-weight:400;font-size:11px;">(석박사 통합 포함)</span></th>
+              <th>석사 과정</th>
+              <th>학부 과정</th>
+            </tr>
+          </thead>
+          <tbody id="q1tbody">
+            <tr><td class="row-label badge-col"><span style="margin-right:4px;">Ⓐ</span>노심플라즈마</td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td></tr>
+            <tr><td class="row-label badge-col"><span style="margin-right:4px;">Ⓑ</span>증식블랑켓</td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td></tr>
+            <tr><td class="row-label badge-col"><span style="margin-right:4px;">Ⓒ</span>핵융합 소재</td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td></tr>
+            <tr><td class="row-label badge-col"><span style="margin-right:4px;">Ⓓ</span>연료주기</td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td></tr>
+            <tr><td class="row-label badge-col"><span style="margin-right:4px;">Ⓔ</span>디버터</td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td></tr>
+            <tr><td class="row-label badge-col"><span style="margin-right:4px;">Ⓕ</span>가열 및 전류구동 장치</td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td></tr>
+            <tr><td class="row-label badge-col"><span style="margin-right:4px;">Ⓖ</span>초전도 자석</td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td></tr>
+            <tr><td class="row-label badge-col"><span style="margin-right:4px;">Ⓗ</span>핵융합 안전·인허가</td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td></tr>
+            <tr><td class="row-label badge-col"><span style="margin-right:4px;">Ⓘ</span>기반장치·시설</td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td></tr>
+            <tr><td class="row-label badge-col" style="color:#555;">기타</td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td><td><input class="num-input" type="number" min="0" value=""><span class="unit">명</span></td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div style="margin-top:10px;">
+          <label class="field-label" style="font-size:12.5px;">기타 분야명 (해당 시 기입)</label>
+          <input class="field-input" type="text" placeholder="기타 분야명을 직접 입력해 주세요" style="max-width:340px;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- II. 연구 현황 -->
+  <div class="section-block">
+    <div class="section-header">
+      <span class="section-badge">II</span>
+      <span class="section-title">핵융합 분야 연구 현황</span>
+    </div>
+    <div class="section-body">
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">Q2</span> 귀 연구실의 핵융합 관련 연구과제 수행 현황을 작성해 주십시오. (2025년 기준)</div>
+
+        <!-- Q2-1 -->
+        <div class="sub-block">
+          <div class="sub-title">Q-2-1. 현재 수행 중인 연구과제 수</div>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <input class="num-input" type="number" min="0" style="width:90px;"> <span style="font-size:13px;">개</span>
+          </div>
+        </div>
+
+        <!-- Q2-2 -->
+        <div class="sub-block">
+          <div class="sub-title">Q-2-2. 연간 총 연구비 규모</div>
+          <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap:8px;">
+            <label class="check-item"><input type="checkbox"> 1억원 미만 &nbsp; <input class="num-input" type="number" min="0" style="width:56px;"> 개</label>
+            <label class="check-item"><input type="checkbox"> 1~5억원 &nbsp; <input class="num-input" type="number" min="0" style="width:56px;"> 개</label>
+            <label class="check-item"><input type="checkbox"> 5~10억원 &nbsp; <input class="num-input" type="number" min="0" style="width:56px;"> 개</label>
+            <label class="check-item"><input type="checkbox"> 10~30억원 &nbsp; <input class="num-input" type="number" min="0" style="width:56px;"> 개</label>
+            <label class="check-item"><input type="checkbox"> 30억원 이상 &nbsp; <input class="num-input" type="number" min="0" style="width:56px;"> 개</label>
+          </div>
+        </div>
+
+        <!-- Q2-3 -->
+        <div class="sub-block">
+          <div class="sub-title">Q-2-3. 수행기간(과제기간)별 연구과제 수</div>
+          <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap:8px;">
+            <label class="check-item"><input type="checkbox"> 1년 이하 &nbsp; <input class="num-input" type="number" min="0" style="width:56px;"> 개</label>
+            <label class="check-item"><input type="checkbox"> 1~3년 &nbsp; <input class="num-input" type="number" min="0" style="width:56px;"> 개</label>
+            <label class="check-item"><input type="checkbox"> 3~5년 &nbsp; <input class="num-input" type="number" min="0" style="width:56px;"> 개</label>
+            <label class="check-item"><input type="checkbox"> 5년 이상 &nbsp; <input class="num-input" type="number" min="0" style="width:56px;"> 개</label>
+          </div>
+        </div>
+
+        <!-- Q2-4 -->
+        <div class="sub-block">
+          <div class="sub-title">Q-2-4. 연구비 재원</div>
+          <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap:8px;">
+            <label class="check-item"><input type="checkbox"> 정부 R&D 과제 &nbsp; <input class="num-input" type="number" min="0" style="width:56px;"> 개</label>
+            <label class="check-item"><input type="checkbox"> 공공기관(출연연 등) &nbsp; <input class="num-input" type="number" min="0" style="width:56px;"> 개</label>
+            <label class="check-item"><input type="checkbox"> 민간기업 &nbsp; <input class="num-input" type="number" min="0" style="width:56px;"> 개</label>
+            <label class="check-item"><input type="checkbox"> 국제협력(해외기관 등) &nbsp; <input class="num-input" type="number" min="0" style="width:56px;"> 개</label>
+            <label class="check-item has-input"><input type="checkbox"> 기타 &nbsp; <input type="text" class="extra-input" placeholder="내용 입력"> &nbsp; <input class="num-input" type="number" min="0" style="width:56px;"> 개</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- III. 진로 현황 -->
+  <div class="section-block">
+    <div class="section-header">
+      <span class="section-badge">III</span>
+      <span class="section-title">핵융합 인력 진로 현황</span>
+    </div>
+    <div class="section-body">
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">Q3</span> 귀 연구실의 최근 5년 (2021년~2025년)간 졸업생의 진로 현황을 작성해 주십시오.</div>
+        <div class="q-hint">
+          <ul>
+            <li>학부생의 경우 해당 연구실에 소속되었던 학부연구생인 경우에만 작성해 주시기 바랍니다.</li>
+            <li>정규는 정규직을, 비정규는 비정규직을 의미합니다.</li>
+          </ul>
+        </div>
+
+        <!-- 연도별 표 -->
+        <div id="careerTables"></div>
+
+        <hr class="q-divider">
+
+        <!-- Q3-1 -->
+        <div class="q-block" style="margin-bottom:0;">
+          <div class="q-label" style="font-size:13.5px;"><span class="q-num" style="font-size:11.5px;">Q3-1</span> 비핵융합 분야로 진출한 주요 이유는 무엇입니까? (중복 응답 가능)</div>
+          <div class="check-grid">
+            <label class="check-item"><input type="checkbox"> 연봉</label>
+            <label class="check-item"><input type="checkbox"> 일자리 부족</label>
+            <label class="check-item"><input type="checkbox"> 커리어 전망</label>
+            <label class="check-item"><input type="checkbox"> 전공 활용 어려움</label>
+            <label class="check-item"><input type="checkbox"> 타 산업 선호</label>
+            <label class="check-item"><input type="checkbox"> 해외 진출</label>
+            <label class="check-item"><input type="checkbox"> 추가 학업(타 분야 진학)</label>
+            <label class="check-item has-input"><input type="checkbox"> 기타 <input type="text" class="extra-input" placeholder="직접 입력"></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IV. 교육 현황 -->
+  <div class="section-block">
+    <div class="section-header">
+      <span class="section-badge">IV</span>
+      <span class="section-title">핵융합 교육 현황</span>
+    </div>
+    <div class="section-body">
+
+      <!-- Q4 -->
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">Q4</span> 귀 연구실이 소속된 대학(또는 타 단과대)에는 핵융합 분야 관련 전공 과정을 운영하고 있습니까?</div>
+        <div class="radio-group" id="q4radio">
+          <label class="radio-item" style="border:1.5px solid var(--border); padding:10px 18px; border-radius:8px;">
+            <input type="radio" name="q4" value="yes" onchange="toggleQ4(true)">
+            ① 있음
+            <span style="margin-left:8px; background:#dbeafe; color:#1e40af; font-size:11.5px; font-weight:600; padding:2px 8px; border-radius:10px;">→ Q-4-1 작성</span>
+          </label>
+          <label class="radio-item" style="border:1.5px solid var(--border); padding:10px 18px; border-radius:8px;">
+            <input type="radio" name="q4" value="no" onchange="toggleQ4(false)">
+            ② 없음
+            <span style="margin-left:8px; background:#f1f5f9; color:#64748b; font-size:11.5px; font-weight:600; padding:2px 8px; border-radius:10px;">→ Q-5로 이동</span>
+          </label>
+        </div>
+
+        <div id="q4detail" style="display:none; margin-top:16px; background:#f0f5ff; border:2px solid #2a5298; border-radius:10px; padding:18px 20px;">
+          <div style="font-size:13.5px; font-weight:700; color:var(--primary); margin-bottom:14px; display:flex; align-items:center; gap:8px;">
+            <span style="background:var(--primary); color:#fff; font-size:12px; padding:3px 10px; border-radius:4px;">Q-4-1</span>
+            귀 대학에서 운영중인 핵융합 관련 전공 과정 현황을 입력해 주십시오.
+          </div>
+          <div style="overflow-x:auto;">
+          <table class="course-table" id="q4table">
+            <thead>
+              <tr>
+                <th style="width:60px;">구분</th>
+                <th>전공명</th>
+                <th style="width:130px;">구분<br><span style="font-weight:400;font-size:11px;">(주전공/부전공/연계전공)</span></th>
+                <th style="width:70px;">2021</th>
+                <th style="width:70px;">2022</th>
+                <th style="width:70px;">2023</th>
+                <th style="width:70px;">2024</th>
+                <th style="width:70px;">2025</th>
+                <th style="width:44px;"></th>
+              </tr>
+            </thead>
+            <tbody id="q4tbody">
+              <tr class="section-row"><td colspan="9">학부</td></tr>
+              <tr>
+                <td style="text-align:center; color:#888; font-size:12px;">학부</td>
+                <td><input type="text" placeholder="전공명"></td>
+                <td><select><option value="">선택</option><option>주전공</option><option>부전공</option><option>연계전공</option></select></td>
+                <td><input type="text" style="width:55px; text-align:center;" placeholder="명"></td>
+                <td><input type="text" style="width:55px; text-align:center;" placeholder="명"></td>
+                <td><input type="text" style="width:55px; text-align:center;" placeholder="명"></td>
+                <td><input type="text" style="width:55px; text-align:center;" placeholder="명"></td>
+                <td><input type="text" style="width:55px; text-align:center;" placeholder="명"></td>
+                <td style="text-align:center;"><button onclick="addCourseRow('q4tbody','학부')" style="background:none;border:none;color:var(--primary-light);cursor:pointer;font-size:18px;" title="행 추가">＋</button></td>
+              </tr>
+              <tr class="section-row"><td colspan="9">대학원</td></tr>
+              <tr>
+                <td style="text-align:center; color:#888; font-size:12px;">대학원</td>
+                <td><input type="text" placeholder="전공명"></td>
+                <td><select><option value="">선택</option><option>주전공</option><option>부전공</option><option>연계전공</option></select></td>
+                <td><input type="text" style="width:55px; text-align:center;" placeholder="명"></td>
+                <td><input type="text" style="width:55px; text-align:center;" placeholder="명"></td>
+                <td><input type="text" style="width:55px; text-align:center;" placeholder="명"></td>
+                <td><input type="text" style="width:55px; text-align:center;" placeholder="명"></td>
+                <td><input type="text" style="width:55px; text-align:center;" placeholder="명"></td>
+                <td style="text-align:center;"><button onclick="addCourseRow('q4tbody','대학원')" style="background:none;border:none;color:var(--primary-light);cursor:pointer;font-size:18px;" title="행 추가">＋</button></td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+          <div style="font-size:12px; color:var(--text-muted); margin-top:6px;">* 연계전공: 학과 간 협동 과정</div>
+        </div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">Q5</span> 귀 연구실이 소속된 대학(또는 타 단과대)에는 핵융합 관련 교과목이 개설되어 있습니까?</div>
+        <div class="radio-group">
+          <label class="radio-item" style="border:1.5px solid var(--border); padding:10px 18px; border-radius:8px;">
+            <input type="radio" name="q5" value="yes" onchange="toggleQ5('yes')">
+            ① 있음
+            <span style="margin-left:8px; background:#dbeafe; color:#1e40af; font-size:11.5px; font-weight:600; padding:2px 8px; border-radius:10px;">→ Q-5-1 작성</span>
+          </label>
+          <label class="radio-item" style="border:1.5px solid var(--border); padding:10px 18px; border-radius:8px;">
+            <input type="radio" name="q5" value="no" onchange="toggleQ5('no')">
+            ② 없음
+            <span style="margin-left:8px; background:#f1f5f9; color:#64748b; font-size:11.5px; font-weight:600; padding:2px 8px; border-radius:10px;">→ Q-6으로 이동</span>
+          </label>
+          <label class="radio-item" style="border:1.5px solid var(--border); padding:10px 18px; border-radius:8px;">
+            <input type="radio" name="q5" value="unknown" onchange="toggleQ5('unknown')">
+            ③ 모름
+            <span style="margin-left:8px; background:#f1f5f9; color:#64748b; font-size:11.5px; font-weight:600; padding:2px 8px; border-radius:10px;">→ Q-6으로 이동</span>
+          </label>
+        </div>
+
+        <div id="q5detail" style="display:none; margin-top:16px; background:#f0f5ff; border:2px solid #2a5298; border-radius:10px; padding:18px 20px;">
+          <div style="font-size:13.5px; font-weight:700; color:var(--primary); margin-bottom:14px; display:flex; align-items:center; gap:8px;">
+            <span style="background:var(--primary); color:#fff; font-size:12px; padding:3px 10px; border-radius:4px;">Q-5-1</span>
+            귀 대학에 개설된 핵융합 관련 교과목 현황 (타 학과 포함)을 기입해 주십시오.
+          </div>
+          <div style="overflow-x:auto;">
+          <table class="course-table">
+            <thead>
+              <tr>
+                <th style="width:60px;">구분</th>
+                <th>과목명</th>
+                <th style="width:200px;">주요 교과 내용<br><span style="font-weight:400; font-size:11px;">(간략히 설명)</span></th>
+                <th style="width:60px;">2021</th>
+                <th style="width:60px;">2022</th>
+                <th style="width:60px;">2023</th>
+                <th style="width:60px;">2024</th>
+                <th style="width:60px;">2025</th>
+                <th style="width:44px;"></th>
+              </tr>
+            </thead>
+            <tbody id="q5tbody">
+              <tr class="section-row"><td colspan="9">학부</td></tr>
+              <tr>
+                <td style="text-align:center; color:#888; font-size:12px;">학부</td>
+                <td><input type="text" placeholder="과목명"></td>
+                <td><input type="text" placeholder="주요 교과 내용"></td>
+                <td><input type="text" style="width:50px; text-align:center;" placeholder="수강인원"></td>
+                <td><input type="text" style="width:50px; text-align:center;" placeholder="수강인원"></td>
+                <td><input type="text" style="width:50px; text-align:center;" placeholder="수강인원"></td>
+                <td><input type="text" style="width:50px; text-align:center;" placeholder="수강인원"></td>
+                <td><input type="text" style="width:50px; text-align:center;" placeholder="수강인원"></td>
+                <td style="text-align:center;"><button onclick="addSubjectRow('q5tbody','학부')" style="background:none;border:none;color:var(--primary-light);cursor:pointer;font-size:18px;">＋</button></td>
+              </tr>
+              <tr class="section-row"><td colspan="9">대학원</td></tr>
+              <tr>
+                <td style="text-align:center; color:#888; font-size:12px;">대학원</td>
+                <td><input type="text" placeholder="과목명"></td>
+                <td><input type="text" placeholder="주요 교과 내용"></td>
+                <td><input type="text" style="width:50px; text-align:center;" placeholder="수강인원"></td>
+                <td><input type="text" style="width:50px; text-align:center;" placeholder="수강인원"></td>
+                <td><input type="text" style="width:50px; text-align:center;" placeholder="수강인원"></td>
+                <td><input type="text" style="width:50px; text-align:center;" placeholder="수강인원"></td>
+                <td><input type="text" style="width:50px; text-align:center;" placeholder="수강인원"></td>
+                <td style="text-align:center;"><button onclick="addSubjectRow('q5tbody','대학원')" style="background:none;border:none;color:var(--primary-light);cursor:pointer;font-size:18px;">＋</button></td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- V. 의견 -->
+  <div class="section-block">
+    <div class="section-header">
+      <span class="section-badge">V</span>
+      <span class="section-title">핵융합 전문인력 양성 관련 의견</span>
+    </div>
+    <div class="section-body">
+
+      <!-- Q6 -->
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">Q6</span> 핵융합 전문인력 양성을 위해 가장 필요하다고 생각되는 지원사항은 무엇이라고 생각하십니까? (복수선택/우선순위 부여)</div>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox"> 교육 프로그램 확대(전공/교과목)</label>
+          <label class="check-item"><input type="checkbox"> 연구비 및 장비 지원 확대</label>
+          <label class="check-item"><input type="checkbox"> 학생 인건비 및 장학금 지원</label>
+          <label class="check-item"><input type="checkbox"> 산학연 협력 프로그램 강화</label>
+          <label class="check-item"><input type="checkbox"> 취업 연계 및 진로 지원</label>
+          <label class="check-item"><input type="checkbox"> 핵융합 관련 일자리 확대</label>
+          <label class="check-item"><input type="checkbox"> 국제협력 및 해외연수 기회 확대</label>
+          <label class="check-item has-input"><input type="checkbox"> 기타 <input type="text" class="extra-input" placeholder="직접 입력"></label>
+        </div>
+        <div style="margin-top:12px;">
+          <label class="field-label" style="font-size:12.5px;">우선순위 (선택한 항목을 순서대로 기입해 주세요)</label>
+          <input class="field-input" type="text" placeholder="예: 연구비 및 장비 지원 확대 > 학생 인건비 및 장학금 지원 > ..." style="font-size:13px;">
+        </div>
+      </div>
+
+      <!-- Q7 -->
+      <div class="q-block" style="margin-bottom:0;">
+        <div class="q-label"><span class="q-num">Q7</span> 핵융합 전문인력 양성을 위해 국가적 지원이 필요하거나, 개선이 필요한 사항이 있다면 자유롭게 기입해 주십시오.</div>
+        <textarea class="survey-textarea" placeholder="자유롭게 의견을 입력해 주세요."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUBMIT -->
+  <div class="submit-area">
+    <div id="emailSetup" style="margin-bottom:20px; background:#eef2f9; border:1.5px solid #2a5298; border-radius:10px; padding:14px 20px; text-align:left; max-width:500px; margin-left:auto; margin-right:auto;">
+      <div style="font-size:13px; font-weight:700; color:#1a3a6b; margin-bottom:4px;">📧 응답 수집 안내</div>
+      <div style="font-size:12.5px; color:#3a5080;">제출하시면 응답 내용이 담당자 이메일로 자동 전송됩니다.</div>
+    </div>
+    <button class="submit-btn" onclick="submitForm()">제출하기</button>
+    <p class="submit-note">※ 제출 전 모든 내용을 한 번 더 확인해 주시기 바랍니다. 감사합니다.</p>
+    <div id="submitStatus" style="margin-top:16px; display:none;"></div>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+// ── 스크롤 진행 바 ──
+window.addEventListener('scroll', () => {
+  const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+  document.getElementById('progressBar').style.width = scrolled + '%';
+});
+
+// ── 참고 토글 ──
+function toggleRef() {
+  const btn = document.getElementById('refToggle');
+  const content = document.getElementById('refContent');
+  btn.classList.toggle('open');
+  content.classList.toggle('open');
+}
+
+// ── Q3 진로 테이블 생성 ──
+const years = [2021, 2022, 2023, 2024, 2025];
+const degrees = ['박사 후 과정', '박사', '석사', '학사'];
+const careerCols = [
+  { label: '대학\n정규', key: 'univ_r' }, { label: '대학\n비정규', key: 'univ_nr' },
+  { label: '정부/공공\n정규', key: 'gov_r' }, { label: '정부/공공\n비정규', key: 'gov_nr' },
+  { label: '민간기업\n정규', key: 'pri_r' }, { label: '민간기업\n비정규', key: 'pri_nr' },
+  { label: '대학\n정규', key: 'ou_r' }, { label: '대학\n비정규', key: 'ou_nr' },
+  { label: '정부/공공\n정규', key: 'og_r' }, { label: '정부/공공\n비정규', key: 'og_nr' },
+  { label: '민간기업\n정규', key: 'op_r' }, { label: '민간기업\n비정규', key: 'op_nr' },
+];
+
+const container = document.getElementById('careerTables');
+years.forEach(yr => {
+  const div = document.createElement('div');
+  div.className = 'year-section';
+  div.innerHTML = `<div class="year-label">${yr}년</div>
+  <div style="overflow-x:auto;">
+  <table class="career-table">
+    <thead>
+      <tr>
+        <th rowspan="3" style="min-width:80px;">학위</th>
+        <th colspan="6" class="th-group">핵융합 분야</th>
+        <th colspan="6" class="th-group">비핵융합 분야</th>
+        <th rowspan="3" style="min-width:50px;">합계</th>
+      </tr>
+      <tr>
+        <th colspan="2">대학</th>
+        <th colspan="2">정부/공공기관</th>
+        <th colspan="2">민간기업</th>
+        <th colspan="2">대학</th>
+        <th colspan="2">정부/공공기관</th>
+        <th colspan="2">민간기업</th>
+      </tr>
+      <tr>
+        ${Array(6).fill(0).map(() => '<th>정규</th><th>비정규</th>').join('')}
+      </tr>
+    </thead>
+    <tbody>
+      ${degrees.map(d => `<tr>
+        <td class="degree-cell">${d}</td>
+        ${careerCols.map(c => `<td><input class="mini-input" type="number" min="0" placeholder="0"></td>`).join('')}
+        <td class="sum-cell"><input class="mini-input" type="number" min="0" placeholder="0"></td>
+      </tr>`).join('')}
+    </tbody>
+  </table></div>`;
+  container.appendChild(div);
+});
+
+// ── Q4 토글 ──
+function toggleQ4(show) {
+  const el = document.getElementById('q4detail');
+  if (show) {
+    el.style.display = 'block';
+    el.style.opacity = '0';
+    el.style.transition = 'opacity 0.3s';
+    setTimeout(() => { el.style.opacity = '1'; }, 10);
+    setTimeout(() => { el.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 50);
+  } else {
+    el.style.transition = 'opacity 0.2s';
+    el.style.opacity = '0';
+    setTimeout(() => { el.style.display = 'none'; }, 200);
+  }
+}
+
+// ── Q5 토글 ──
+function toggleQ5(val) {
+  const el = document.getElementById('q5detail');
+  if (val === 'yes') {
+    el.style.display = 'block';
+    el.style.opacity = '0';
+    el.style.transition = 'opacity 0.3s';
+    setTimeout(() => { el.style.opacity = '1'; }, 10);
+    setTimeout(() => { el.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 50);
+  } else {
+    el.style.transition = 'opacity 0.2s';
+    el.style.opacity = '0';
+    setTimeout(() => { el.style.display = 'none'; }, 200);
+  }
+}
+
+// ── 행 추가 (Q4) ──
+function addCourseRow(tbodyId, type) {
+  const tbody = document.getElementById(tbodyId);
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td style="text-align:center; color:#888; font-size:12px;">${type}</td>
+    <td><input type="text" placeholder="전공명"></td>
+    <td><select><option value="">선택</option><option>주전공</option><option>부전공</option><option>연계전공</option></select></td>
+    <td><input type="text" style="width:55px; text-align:center;" placeholder="명"></td>
+    <td><input type="text" style="width:55px; text-align:center;" placeholder="명"></td>
+    <td><input type="text" style="width:55px; text-align:center;" placeholder="명"></td>
+    <td><input type="text" style="width:55px; text-align:center;" placeholder="명"></td>
+    <td><input type="text" style="width:55px; text-align:center;" placeholder="명"></td>
+    <td style="text-align:center;"><button onclick="this.closest('tr').remove()" style="background:none;border:none;color:#e74c3c;cursor:pointer;font-size:18px;">✕</button></td>`;
+  // insert before last section row or at end
+  tbody.appendChild(tr);
+}
+
+// ── 행 추가 (Q5) ──
+function addSubjectRow(tbodyId, type) {
+  const tbody = document.getElementById(tbodyId);
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td style="text-align:center; color:#888; font-size:12px;">${type}</td>
+    <td><input type="text" placeholder="과목명"></td>
+    <td><input type="text" placeholder="주요 교과 내용"></td>
+    <td><input type="text" style="width:50px; text-align:center;" placeholder="수강인원"></td>
+    <td><input type="text" style="width:50px; text-align:center;" placeholder="수강인원"></td>
+    <td><input type="text" style="width:50px; text-align:center;" placeholder="수강인원"></td>
+    <td><input type="text" style="width:50px; text-align:center;" placeholder="수강인원"></td>
+    <td><input type="text" style="width:50px; text-align:center;" placeholder="수강인원"></td>
+    <td style="text-align:center;"><button onclick="this.closest('tr').remove()" style="background:none;border:none;color:#e74c3c;cursor:pointer;font-size:18px;">✕</button></td>`;
+  tbody.appendChild(tr);
+}
+
+// ── 제출 ──
+async function submitForm() {
+  // 모든 입력값 수집
+  const data = {};
+
+  // 텍스트 input / textarea / select
+  document.querySelectorAll('input[type=text], input[type=email], input[type=url], input[type=number], textarea, select').forEach(el => {
+    const label = el.closest('.field-group, .q-block, .sub-block, td')?.querySelector('.field-label, .q-label, .sub-title')?.textContent?.trim()
+      || el.placeholder || el.name || '';
+    const key = (el.name || el.placeholder || label || '항목').substring(0, 60);
+    if (el !== document.getElementById('recipientEmail') && el.value) {
+      data[key] = (data[key] ? data[key] + ' / ' : '') + el.value;
+    }
+  });
+
+  // 체크박스
+  document.querySelectorAll('input[type=checkbox]:checked').forEach(el => {
+    const label = el.closest('label')?.textContent?.trim() || '체크박스';
+    data['선택항목'] = (data['선택항목'] ? data['선택항목'] + ', ' : '') + label;
+  });
+
+  // 라디오
+  document.querySelectorAll('input[type=radio]:checked').forEach(el => {
+    const label = el.closest('label')?.textContent?.trim() || '선택';
+    const groupName = el.name || '라디오';
+    data[groupName] = label;
+  });
+
+  // 상태 표시
+  const statusEl = document.getElementById('submitStatus');
+  statusEl.style.display = 'block';
+  statusEl.innerHTML = '<span style="color:#2a5298; font-size:13.5px;">⏳ 제출 중입니다...</span>';
+
+  // 구글 시트로 전송
+  try {
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxsAbQuemz7MSOkA9t1DQlagtmcrPQ0X9YT-wL8DXlAstMbHPLt3fwlHkxgewPHuuESVg/exec';
+
+    const res = await fetch(SCRIPT_URL, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: { 'Content-Type': 'text/plain' },
+      mode: 'no-cors'
+    });
+
+    // no-cors 모드에서는 응답 확인 불가 → 전송 자체가 성공하면 완료로 처리
+    statusEl.innerHTML = `
+      <div style="background:#e8f5e9; border:1.5px solid #4caf50; border-radius:8px; padding:16px 20px; font-size:13.5px; color:#1e7e50;">
+        ✅ <strong>제출이 완료되었습니다!</strong><br>
+        <span style="font-size:12.5px; margin-top:6px; display:block;">
+          응답 내용이 구글 시트에 저장되었습니다. 감사합니다.
+        </span>
+      </div>`;
+    document.querySelector('.submit-btn').disabled = true;
+    document.querySelector('.submit-btn').style.opacity = '0.5';
+  } catch(e) {
+    statusEl.innerHTML = `
+      <div style="background:#fdecea; border:1.5px solid #e53935; border-radius:8px; padding:16px 20px; font-size:13.5px; color:#b71c1c;">
+        ❌ 제출 중 오류가 발생했습니다. 인터넷 연결을 확인하고 다시 시도해 주세요.
+      </div>`;
+  }
+}
+</script>
+</body>
+</html>
